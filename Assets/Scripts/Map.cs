@@ -27,12 +27,6 @@ public class Map : MonoBehaviour
     {
         board = new Board(height, width);
 
-        board.Place(Owner.RED, 4, 4);
-        board.Place(Owner.BLUE, 4, 3);
-        Debug.Log(board.Get(4, 4));
-        Debug.Log(board.Get(4, 3));
-        Debug.Log(board.Get(5, 5));
-
         ReDraw();
 
         for (int px = 0; px < height; px++)
