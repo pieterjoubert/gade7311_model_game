@@ -26,6 +26,7 @@ public class Map : MonoBehaviour
     void Start()
     {
         board = new Board(height, width);
+        Debug.Log("NumWalls: " + board.NumWalls);
 
         ReDraw();
 
@@ -60,7 +61,6 @@ public class Map : MonoBehaviour
             }
             ReDraw();
         }
-        Debug.Log(w.X + "," + w.Z);
     }
 
     void ReDraw()

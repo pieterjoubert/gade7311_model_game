@@ -98,20 +98,18 @@ namespace Assets.Scripts
             {
                 if ((GetPosition(x, y + 1) != -1 &&
                     GetPosition(x, y + 2) != -1 &&
-                    GetPosition(x + 1, y + 1) != -1) &&
+                    GetPosition(x + 1, y + 1) != -1) &
                     (Walls[GetPosition(x, y + 1)] != Owner.EMPTY &&
                     Walls[GetPosition(x, y + 2)] != Owner.EMPTY &&
                     Walls[GetPosition(x + 1, y + 1)] != Owner.EMPTY))//box above
                 {
-                    Boxes[x, y / 2] = p;
+                    if(x + 1 < Width && y / 2 < Height - 1)
+                        Boxes[x, y / 2] = p;
                     closed = true;
                 }
-                if ((GetPosition(x, y - 1) != -1  &&
-                    GetPosition(x, y - 2) != -1 &&
-                    GetPosition(x + 1, y - 1) != -1) &&
-                    (Walls[GetPosition(x, y - 1)] != Owner.EMPTY &&
+                if (Walls[GetPosition(x, y - 1)] != Owner.EMPTY &&
                     Walls[GetPosition(x, y - 2)] != Owner.EMPTY &&
-                    Walls[GetPosition(x + 1, y - 1)] != Owner.EMPTY))//box below
+                    Walls[GetPosition(x + 1, y - 1)] != Owner.EMPTY)//box below
                 {
                     Boxes[x, (y / 2) - 1] = p;
                     closed = true;
@@ -119,22 +117,17 @@ namespace Assets.Scripts
             }
             else //vertical wall
             {
-                if ((GetPosition(x - 1, y + 1) != -1 &&
-                    GetPosition(x - 1, y - 1) != - 1 &&
-                    GetPosition(x - 1, y) != -1) && 
-                    (Walls[GetPosition(x - 1, y + 1)] != Owner.EMPTY &&
+                if (Walls[GetPosition(x - 1, y + 1)] != Owner.EMPTY &&
                     Walls[GetPosition(x - 1, y - 1)] != Owner.EMPTY &&
-                    Walls[GetPosition(x - 1, y)] != Owner.EMPTY)) //box to the left
+                    Walls[GetPosition(x - 1, y)] != Owner.EMPTY) //box to the left
                 {
-                    Boxes[x - 1, y / 2] = p;
+                    if(x - 1 > 0 && y / 2 < Height - 1)
+                        Boxes[x - 1, y / 2] = p;
                     closed = true;
                 }
-                if ((GetPosition(x, y + 1) != -1 &&
-                    GetPosition(x, y - 1) != -1 &&
-                    GetPosition(x + 1, y) != -1) &&
-                    (Walls[GetPosition(x, y + 1)] != Owner.EMPTY &&
+                if (Walls[GetPosition(x, y + 1)] != Owner.EMPTY &&
                     Walls[GetPosition(x, y - 1)] != Owner.EMPTY &&
-                    Walls[GetPosition(x + 1, y)] != Owner.EMPTY)) //box to the right
+                    Walls[GetPosition(x + 1, y)] != Owner.EMPTY) //box to the right
                 {
                     Boxes[x, (int)Math.Ceiling((double)(y - 1) / 2)] = p;
                     closed = true;
